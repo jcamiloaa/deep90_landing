@@ -3,6 +3,8 @@
 // 
 
 window.addEventListener('DOMContentLoaded', event => {
+    // Inicializar la animación de precarga
+    initPreloader();
 
     // Activate Bootstrap scrollspy on the main nav element
     const mainNav = document.body.querySelector('#mainNav');
@@ -26,8 +28,6 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     });
     
-    // Removida la función que añadía elementos de animación de fútbol
-    
     // Add fun tooltips to WhatsApp buttons
     initializeTooltips();
     
@@ -40,6 +40,94 @@ window.addEventListener('DOMContentLoaded', event => {
     // Inicializar la simulación de WhatsApp
     initWhatsAppChat();
 });
+
+// Animación de precarga con anime.js
+function initPreloader() {
+    const preloader = document.getElementById('preloader');
+    
+    if (!preloader) return;
+    
+    // Configuración de la animación principal
+    const preloaderAnimation = anime.timeline({
+        easing: 'easeOutExpo',
+        complete: () => {
+            // Ocultar el preloader después de completar la animación
+            setTimeout(() => {
+                // Animación de salida del preloader
+                anime({
+                    targets: '#preloader',
+                    opacity: [1, 0],
+                    duration: 800,
+                    easing: 'easeInOutQuad',
+                    complete: () => {
+                        preloader.classList.add('hidden-preloader');
+                        setTimeout(() => {
+                            preloader.style.display = 'none';
+                        }, 100);
+                    }
+                });
+            }, 300);
+        }
+    });
+    
+    // Efecto inicial de pulso de logo
+    preloaderAnimation
+        .add({
+            targets: '.logo-container',
+            scale: [0.5, 1],
+            opacity: [0, 1],
+            duration: 1000
+        })
+        .add({
+            targets: '.full-logo span',
+            opacity: [0, 1],
+            translateY: [40, 0],
+            translateX: [0, 0],
+            rotate: [15, 0],
+            scale: [0.8, 1],
+            duration: 1800,
+            delay: anime.stagger(120)
+        }, '-=400')
+        .add({
+            targets: '.tagline',
+            opacity: [0, 1],
+            translateY: [20, 0],
+            duration: 1200,
+            complete: () => {
+                // Efecto de resplandor para el logo
+                anime({
+                    targets: '.logo-container img',
+                    filter: ['drop-shadow(0 0 0px rgba(0, 123, 255, 0.8))', 'drop-shadow(0 0 15px rgba(0, 123, 255, 0.8))', 'drop-shadow(0 0 5px rgba(0, 123, 255, 0.8))'],
+                    direction: 'alternate',
+                    duration: 1500,
+                    loop: 2,
+                    easing: 'easeInOutQuad'
+                });
+                
+                // Efecto de color para las letras del logo completo
+                anime({
+                    targets: '.full-logo span.text-white',
+                    color: ['#ffffff', '#007bff', '#ffffff'],
+                    delay: anime.stagger(100),
+                    duration: 1200,
+                    loop: 2,
+                    direction: 'alternate',
+                    easing: 'easeInOutSine'
+                });
+                
+                // Efecto de color para los números del logo
+                anime({
+                    targets: '.full-logo span.text-primary',
+                    color: ['#007bff', '#ffffff', '#007bff'],
+                    delay: anime.stagger(100),
+                    duration: 1200,
+                    loop: 2,
+                    direction: 'alternate',
+                    easing: 'easeInOutSine'
+                });
+            }
+        });
+}
 
 // Function that añadía balones ha sido eliminada
 

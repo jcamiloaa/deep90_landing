@@ -12004,6 +12004,35 @@ footer a:hover, footer a:active, footer a:focus {
   padding: 1.5rem;
   background-color: #f8f9fa;
 }
+.pricing-section .pricing-card .pricing-cta .btn-outline-primary {
+  color: #25D366;
+  border-color: #25D366;
+  transition: all 0.3s ease;
+}
+.pricing-section .pricing-card .pricing-cta .btn-outline-primary:hover {
+  color: #fff;
+  background-color: #25D366;
+  border-color: #25D366;
+}
+.pricing-section .pricing-card .pricing-cta .btn-outline-primary i {
+  transition: transform 0.3s ease;
+}
+.pricing-section .pricing-card .pricing-cta .btn-outline-primary:hover i {
+  transform: scale(1.2);
+}
+.pricing-section .pricing-card .pricing-cta .btn-primary {
+  color: #fff;
+  transition: all 0.3s ease;
+}
+.pricing-section .pricing-card .pricing-cta .btn-primary:hover {
+  transform: translateY(-2px);
+}
+.pricing-section .pricing-card .pricing-cta .btn-primary i {
+  transition: transform 0.3s ease;
+}
+.pricing-section .pricing-card .pricing-cta .btn-primary:hover i {
+  transform: scale(1.2);
+}
 
 .bg-gradient-primary-to-secondary {
   position: relative;
@@ -12396,4 +12425,157 @@ footer a:hover, footer a:active, footer a:focus {
 .board-label {
   opacity: 0;
   animation: fadeInUp 0.5s ease forwards 1.6s;
+}
+
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+  overflow: hidden;
+}
+.preloader:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, rgba(0, 70, 150, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+  z-index: 1;
+  animation: pulse-bg 3s infinite alternate;
+}
+.preloader:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(0, 123, 255, 0) 0%, rgba(172, 176, 180, 0.2) 50%, rgba(0, 123, 255, 0) 100%);
+  transform-origin: center;
+  transform: scaleX(0);
+  animation: line-expand 1.5s ease-in-out forwards;
+  z-index: 1;
+}
+
+@keyframes pulse-bg {
+  0% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}
+@keyframes line-expand {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+.preloader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  position: relative;
+  z-index: 2;
+}
+
+.logo-container {
+  margin-bottom: 2rem;
+  position: relative;
+}
+.logo-container:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: rgba(0, 123, 255, 0.05);
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+.logo-container img {
+  max-width: 120px;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 0 8px rgba(0, 123, 255, 0.5));
+}
+
+.text-animation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  font-family: "Bebas Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  perspective: 1000px;
+}
+.text-animation .full-logo {
+  display: flex;
+  gap: 0; /* Asegura que no haya espacio entre las letras */
+  margin-bottom: 0.5rem;
+  /* Estilos para Deep (blanco) */
+  /* Estilos para 90 (verde) */
+}
+.text-animation .full-logo span {
+  display: inline-block;
+  font-size: 3rem;
+  font-weight: bold;
+  opacity: 0;
+  transform: translateY(20px);
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
+  transform-style: preserve-3d;
+}
+.text-animation .full-logo span.text-white {
+  color: #fff;
+}
+.text-animation .full-logo span.text-primary {
+  color: #25D366;
+}
+
+.tagline {
+  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1.25rem;
+  opacity: 0;
+  color: #fff;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  margin-top: 0.5rem;
+  position: relative;
+}
+.tagline:after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.hidden-preloader {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@media (min-width: 768px) {
+  .text-animation .full-logo span {
+    font-size: 4.5rem;
+  }
+  .tagline {
+    font-size: 1.5rem;
+  }
 }

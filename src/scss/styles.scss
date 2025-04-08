@@ -555,6 +555,43 @@
             text-align: center;
             padding: 1.5rem;
             background-color: $light;
+            
+            .btn-outline-primary {
+                color: $primary;
+                border-color: $primary;
+                transition: all 0.3s ease;
+                
+                &:hover {
+                    color: $white;
+                    background-color: $primary;
+                    border-color: $primary;
+                }
+                
+                i {
+                    transition: transform 0.3s ease;
+                }
+                
+                &:hover i {
+                    transform: scale(1.2);
+                }
+            }
+            
+            .btn-primary {
+                color: $white;
+                transition: all 0.3s ease;
+                
+                &:hover {
+                    transform: translateY(-2px);
+                }
+                
+                i {
+                    transition: transform 0.3s ease;
+                }
+                
+                &:hover i {
+                    transform: scale(1.2);
+                }
+            }
         }
     }
 }
@@ -1043,4 +1080,179 @@
 .board-label {
     opacity: 0;
     animation: fadeInUp 0.5s ease forwards 1.6s;
+}
+
+// Estilos para la animación de precarga con anime.js
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+    overflow: hidden;
+    
+    // Efectos de fondo avanzados
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at center, rgba(0,70,150,0.15) 0%, rgba(0,0,0,0) 70%);
+        z-index: 1;
+        animation: pulse-bg 3s infinite alternate;
+    }
+    
+    // Líneas de fondo dinámicas
+    &:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(90deg, 
+            rgba(0,123,255,0) 0%, 
+            rgba(172, 176, 180, 0.2) 50%, 
+            rgba(0,123,255,0) 100%);
+        transform-origin: center;
+        transform: scaleX(0);
+        animation: line-expand 1.5s ease-in-out forwards;
+        z-index: 1;
+    }
+}
+
+@keyframes pulse-bg {
+    0% {
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 0.7;
+    }
+}
+
+@keyframes line-expand {
+    0% {
+        transform: scaleX(0);
+    }
+    100% {
+        transform: scaleX(1);
+    }
+}
+
+.preloader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: $white;
+    position: relative;
+    z-index: 2;
+}
+
+.logo-container {
+    margin-bottom: 2rem;
+    position: relative;
+    
+    &:before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background-color: rgba(0,123,255,0.05);
+        transform: translate(-50%, -50%);
+        z-index: -1;
+    }
+    
+    img {
+        max-width: 120px;
+        position: relative;
+        z-index: 2;
+        filter: drop-shadow(0 0 8px rgba(0,123,255,0.5));
+    }
+}
+
+.text-animation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    font-family: $headings-font-family;
+    perspective: 1000px;
+    
+    .full-logo {
+        display: flex;
+        gap: 0; /* Asegura que no haya espacio entre las letras */
+        margin-bottom: 0.5rem;
+        
+        span {
+            display: inline-block;
+            font-size: 3rem;
+            font-weight: bold;
+            opacity: 0;
+            transform: translateY(20px);
+            text-shadow: 0 2px 15px rgba(0,0,0,0.5);
+            transform-style: preserve-3d;
+        }
+        
+        /* Estilos para Deep (blanco) */
+        span.text-white {
+            color: $white;
+        }
+        
+        /* Estilos para 90 (verde) */
+        span.text-primary {
+            color: $primary;
+        }
+    }
+}
+
+.tagline {
+    font-family: $alt-font-family;
+    font-size: 1.25rem;
+    opacity: 0;
+    color: $white;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    margin-top: 0.5rem;
+    position: relative;
+    
+    &:after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40px;
+        height: 2px;
+        background-color: rgba(255,255,255,0.3);
+    }
+}
+
+.hidden-preloader {
+    opacity: 0;
+    visibility: hidden;
+}
+
+@media (min-width: 768px) {
+    .text-animation {
+        .full-logo {
+            span {
+                font-size: 4.5rem;
+            }
+        }
+    }
+    
+    .tagline {
+        font-size: 1.5rem;
+    }
 }

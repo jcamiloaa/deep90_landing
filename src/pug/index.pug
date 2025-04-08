@@ -20,10 +20,28 @@ html(lang='es')
         link(href='https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap', rel='stylesheet')
         link(href='https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap', rel='stylesheet')
 
+        // Anime.js para las animaciones
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js')
+
         // Core theme CSS (includes Bootstrap)
         link(href='css/styles.css', rel='stylesheet')
 
     body#page-top
+        
+        // Preloader Animation
+        #preloader.preloader
+            .preloader-content
+                .logo-container
+                    img(src='assets/img/preload-logo.png', alt='Deep90 Logo')
+                .text-animation
+                    .full-logo
+                        span.text-white D
+                        span.text-white e
+                        span.text-white e
+                        span.text-white p
+                        span.text-primary 9
+                        span.text-primary 0
+                .tagline Análisis de fútbol simple y directo
 
         // Navigation
         nav#mainNav.navbar.navbar-expand-lg.navbar-dark.fixed-top.shadow-sm
@@ -45,10 +63,10 @@ html(lang='es')
                             a.nav-link.me-lg-3(href='#pricing') Planes
                         li.nav-item
                             a.nav-link.me-lg-3(href='#testimonials') Testimonios
-                    button.btn.btn-secondary.rounded-pill.px-3.mb-2.mb-lg-0(onclick="window.open('https://wa.me/573227091047?text=Hola%20Deep90', '_blank')")
+                    button.btn.btn-secondary.rounded-pill.px-3.mb-2.mb-lg-0.text-white(onclick="window.open('https://wa.me/573227091047?text=Hola%20Deep90', '_blank')")
                         span.d-flex.align-items-center
                             i.bi-whatsapp.me-2
-                            span.small ¡Probar ahora! ⚡
+                            span.small ¡Probar ahora!
 
         // Hero Section
         section#hero.bg-white
@@ -57,10 +75,10 @@ html(lang='es')
                     .row.gx-5.align-items-center
                         .col-lg-6
                             .mb-5.mb-lg-0.text-center.text-lg-start  
-                                h1.display-1.lh-1.mb-3 DEEP90: análisis de fútbol simple y preciso ⚽︎
+                                h1.display-1.lh-1.mb-3 DEEP90: análisis de fútbol simple y directo ⚽︎
                                 p.lead.fw-normal.text-muted.mb-5 Toda la información que necesitas sobre tu equipo favorito, explicada de forma clara y directa por WhatsApp. Estadísticas, predicciones y análisis táctico sin complicaciones, antes, durante y después del partido. 🎯
                                 .d-flex.flex-column.flex-lg-row.align-items-center
-                                    button.btn.btn-primary.rounded-pill.px-4.py-3.pulse(onclick="window.open('https://wa.me/573227091047?text=Hola%20Deep90', '_blank')")
+                                    button.btn.btn-primary.rounded-pill.px-4.py-3.pulse.text-white(onclick="window.open('https://wa.me/573227091047?text=Hola%20Deep90', '_blank')")
                                         span.d-flex.align-items-center
                                             i.bi-whatsapp.me-2
                                             span Probar ahora - Es gratis
@@ -260,7 +278,7 @@ html(lang='es')
                                     .avatar-container.me-2
                                         img.avatar-img.rounded-circle(src='assets/img/logo.png', alt='Deep90 Logo')
                                     .chat-info.text-white
-                                        h6.mb-0.fw-bold DEEP90
+                                        h6.mb-0.fw-bold Deep90
                                         .status-text
                                             span.status-dot
                                             | En línea
@@ -319,7 +337,7 @@ html(lang='es')
                                         .message-time 14:07
                                 
                                 // Mensaje 4: Usuario selecciona liga
-                                .message-row.message-liga-respuesta.d-none
+                                .message-row.message-liga-respuesta.d.none
                                     .message.message-sent.with-tail
                                         .message-content
                                             p.mb-0 Liga BetPlay 🇨🇴
@@ -334,7 +352,7 @@ html(lang='es')
                                         span
                                         span
                                 
-                                .message-row.message-partidos.d-none
+                                .message-row.message-partidos.d.none
                                     .message.message-received.with-tail
                                         .message-content
                                             p.mb-2 📅 Partidos de hoy - Liga BetPlay:
@@ -381,7 +399,7 @@ html(lang='es')
                                         .message-time 14:11
                                 
                                 // Mensaje 8: Usuario selecciona apuestas
-                                .message-row.message-apuestas-seleccion.d-none
+                                .message-row.message-apuestas-seleccion.d.none
                                     .message.message-sent.with-tail
                                         .message-content
                                             p.mb-0 Información de apuestas
@@ -396,7 +414,7 @@ html(lang='es')
                                         span
                                         span
                                 
-                                .message-row.message-apuestas-info.d-none
+                                .message-row.message-apuestas-info.d.none
                                     .message.message-received.with-tail
                                         .message-content
                                             p.mb-2 💰 Análisis de casas de apuestas: Nacional vs América
@@ -445,7 +463,7 @@ html(lang='es')
                                         span
                                 
                                 // Mensaje 12: Bot da pronóstico final
-                                .message-row.message-pronostico-final.d-none
+                                .message-row.message-pronostico-final.d.none
                                     .message.message-received.with-tail
                                         .message-content
                                             .prediction-card.mb-2
@@ -477,7 +495,7 @@ html(lang='es')
         
         // Botón CTA por WhatsApp
         .text-center.mb-5
-            button.btn.btn-primary.btn-lg.rounded-pill.px-5.py-3.pulse(onclick="window.open('https://wa.me/573227091047?text=Hola%20DEEP90,%20quiero%20empezar%20a%20usar%20el%20servicio', '_blank')")
+            button.btn.btn-primary.btn-lg.rounded-pill.px-5.py-3.pulse.text-white(onclick="window.open('https://wa.me/573227091047?text=Hola%20DEEP90,%20quiero%20empezar%20a%20usar%20el%20servicio', '_blank')")
                 i.bi-whatsapp.me-2
                 | Comenzar a usar DEEP90 ahora
 
@@ -589,7 +607,7 @@ html(lang='es')
                                         span.feature-description Grupos exclusivos con influencers del fútbol + consultas ilimitadas de datos históricos.
 
                             .pricing-cta
-                                button.btn.btn-primary.rounded-pill.px-5.py-3.w-100.pulse(onclick="window.open('https://wa.me/573227091047?text=Hola%20Deep90,%20quiero%20el%20plan%20premium', '_blank')")
+                                button.btn.btn-primary.rounded-pill.px-5.py-3.w-100.pulse.text-white(onclick="window.open('https://wa.me/573227091047?text=Hola%20Deep90,%20quiero%20el%20plan%20premium', '_blank')")
                                     i.bi-whatsapp.me-2
                                     | Obtener Plan VIP
                                 
@@ -691,7 +709,7 @@ html(lang='es')
                             .d-flex.flex-column.align-items-center.justify-content-center
                                 h2.display-4.mb-4 ¿Cansado de las estadísticas complicadas? 🤔
                                 .d-flex.flex-column.flex-md-row.gap-3.mb-4.w-100.justify-content-center
-                                    button.btn.btn-primary.btn-lg.rounded-pill.px-5.py-3.shadow-lg.pulse(onclick="window.open('https://wa.me/573227091047?text=Hola%20Deep90,%20quiero%20probar%20el%20analisis', '_blank')")
+                                    button.btn.btn-primary.btn-lg.rounded-pill.px-5.py-3.shadow-lg.pulse.text-white(onclick="window.open('https://wa.me/573227091047?text=Hola%20Deep90,%20quiero%20probar%20el%20analisis', '_blank')")
                                         span.d-flex.align-items-center
                                             i.bi-whatsapp.me-2
                                             span.fs-5 Comenzar ahora - Gratis

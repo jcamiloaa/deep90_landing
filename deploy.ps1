@@ -1,7 +1,12 @@
 # Guardar la rama actual
 $currentBranch = git branch --show-current
 
+# Instalar dependencias
+Write-Host "Instalando dependencias..." -ForegroundColor Yellow
+npm install
+
 # Construir el sitio
+Write-Host "Construyendo el sitio..." -ForegroundColor Yellow
 npm run build
 
 # Crear carpeta temporal
