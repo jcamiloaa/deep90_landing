@@ -1,6 +1,49 @@
 # Guardar la rama actual
 $currentBranch = git branch --show-current
 
+# Verificar si hay cambios pendientes por sincronizar con main
+Write-Host "Verificando sincronización con la rama main..." -ForegroundColor Yellow
+git fetch origin
+
+# Verificar si estamos en main o no
+if ($currentBranch -eq "main") {
+    # Si estamos en main, verificar si hay cambios locales sin subir
+    $localChanges = git status --porcelain
+    if ($localChanges) {
+        $confirm = Read-Host "Hay cambios locales sin subir a main. ¿Deseas continuar con el deploy? (s/n)"
+        if ($confirm -ne "s") {
+            Write-Host "Despliegue cancelado. Por favor, sube tus cambios a main primero." -ForegroundColor Red
+            exit 1
+        }
+    }
+} else {
+    # Si no estamos en main, verificar si la rama actual está actualizada con main
+    git checkout main
+    git pull origin main
+    git checkout $currentBranch
+    
+    $behindMain = git rev-list --count "$currentBranch..main"
+    $aheadOfMain = git rev-list --count "main..$currentBranch"
+    
+    if ($behindMain -gt 0) {
+        Write-Host "ADVERTENCIA: La rama actual está $behindMain commits por detrás de main." -ForegroundColor Yellow
+        $confirm = Read-Host "Es recomendable actualizar desde main antes de desplegar. ¿Deseas continuar con el deploy? (s/n)"
+        if ($confirm -ne "s") {
+            Write-Host "Despliegue cancelado. Por favor, actualiza tu rama desde main primero." -ForegroundColor Red
+            exit 1
+        }
+    }
+    
+    if ($aheadOfMain -gt 0) {
+        Write-Host "ADVERTENCIA: La rama actual tiene $aheadOfMain commits por delante de main que no han sido integrados." -ForegroundColor Yellow
+        $confirm = Read-Host "Es recomendable integrar tus cambios en main antes de desplegar. ¿Deseas continuar con el deploy? (s/n)"
+        if ($confirm -ne "s") {
+            Write-Host "Despliegue cancelado. Por favor, integra tus cambios a main primero." -ForegroundColor Red
+            exit 1
+        }
+    }
+}
+
 # Instalar dependencias
 Write-Host "Instalando dependencias..." -ForegroundColor Yellow
 npm install
