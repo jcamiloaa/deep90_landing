@@ -60,3 +60,17 @@ Para más información sobre Deep90, contáctanos a través de WhatsApp al [+57 
 ## Copyright y licencia
 
 Copyright 2025 BuzztIA. Todos los derechos reservados.
+
+
+### Despliegue con PowerShell
+
+Para el script PowerShell:
+
+- Haz clic derecho en `deploy.ps1` y selecciona "Ejecutar con PowerShell".
+- O abre PowerShell y ejecuta:
+
+```powershell
+.\deploy.ps1
+```
+
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass .\deploy.ps1
