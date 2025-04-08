@@ -1,0 +1,506 @@
+// 
+// Global
+//
+
+// Scroll padding for all scroll targets on page used with
+// native CSS smooth scrolling
+// 
+// https://caniuse.com/?search=scroll-padding
+
+html {
+    scroll-padding-top: 4.5rem;
+}
+
+// Custom utilities
+
+.bg-black {
+    background-color: $black !important;
+}
+
+.bg-gradient-primary-to-secondary {
+    background: linear-gradient(45deg, #{$primary}, #{$secondary}) !important;
+}
+
+.font-alt {
+    font-family: $alt-font-family !important;
+}
+
+.text-gradient {
+    background: -webkit-linear-gradient(#{$primary}, #{$secondary});
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+// Padding for sections
+
+aside,
+section {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+// Set fixed height for app badges
+
+.app-badge {
+    height: 3rem;
+}
+
+// 
+// Custom Football Components and Animations
+// 
+
+// Circle steps for the "How it Works" section
+.circle-step {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    font-family: $headings-font-family;
+}
+
+// Football field styling elements
+.grass-pattern {
+    background-color: $green-field;
+    background-image: repeating-linear-gradient(
+        45deg,
+        darken($green-field, 5%),
+        darken($green-field, 5%) 10px,
+        $green-field 10px,
+        $green-field 20px
+    );
+}
+
+// Hover effects for buttons
+.btn-primary, .btn-secondary {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    
+    &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.2),
+            transparent
+        );
+        transition: all 0.6s ease;
+    }
+    
+    &:hover:before {
+        left: 100%;
+    }
+}
+
+// For dark navbar
+#mainNav {
+    background-color: $black;
+
+    .navbar-brand {
+        font-family: $headings-font-family;
+        color: $white;
+
+        &:hover,
+        &:active {
+            color: $primary;
+        }
+    }
+
+    .navbar-nav {
+        .nav-item {
+            .nav-link {
+                color: $white;
+                &:hover {
+                    color: $primary;
+                }
+                &.active {
+                    color: $secondary;
+                }
+            }
+        }
+    }
+}
+
+// Set container padding
+.container,
+.container-fluid,
+.container-xxl,
+.container-xl,
+.container-lg,
+.container-md,
+.container-sm {
+    padding-right: calc(var(--bs-gutter-x) * 0.5);
+    padding-left: calc(var(--bs-gutter-x) * 0.5);
+}
+
+// Custom animations
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(var(--bs-primary-rgb), 0.7);
+    }
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(var(--bs-primary-rgb), 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(var(--bs-primary-rgb), 0);
+    }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+.bounce-animation {
+    animation: bounce 2s infinite;
+}
+
+// WhatsApp chat simulation styles
+.whatsapp-container {
+    max-width: 360px;
+    height: 600px;
+    position: relative;
+    border: 1px solid rgba(0,0,0,0.1);
+    font-size: 0.9rem;
+}
+
+.whatsapp-header {
+    height: 60px;
+}
+
+.avatar-container {
+    width: 40px;
+    height: 40px;
+}
+
+.avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.chat-info {
+    line-height: 1.2;
+}
+
+.status-text {
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #25D366;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 4px;
+}
+
+.whatsapp-body {
+    height: calc(100% - 120px);
+    overflow-y: auto;
+    padding: 15px;
+    background-color: #E5DDD5;
+    background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d1c7ba' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M0 0h40v40H0V0zm40 40h40v40H40V40zm0-40h2l-2 2V0zm0 4l4-4h2l-6 6V4zm0 4l8-8h2L40 10V8zm0 4L52 0h2L40 14v-2zm0 4L56 0h2L40 18v-2zm0 4L60 0h2L40 22v-2zm0 4L64 0h2L40 26v-2zm0 4L68 0h2L40 30v-2zm0 4L72 0h2L40 34v-2zm0 4L76 0h2L40 38v-2zm0 4L80 0v2L42 40h-2zm4 0L80 4v2L46 40h-2zm4 0L80 8v2L50 40h-2zm4 0l28-28v2L54 40h-2zm4 0l24-24v2L58 40h-2zm4 0l20-20v2L62 40h-2zm4 0l16-16v2L66 40h-2zm4 0l12-12v2L70 40h-2zm4 0l8-8v2l-6 6h-2zm4 0l4-4v2l-2 2h-2z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.bg-whatsapp-bg {
+    background-color: #E5DDD5;
+}
+
+.chat-date {
+    margin: 10px 0;
+}
+
+.chat-date span {
+    padding: 5px 12px;
+    background-color: rgba(225, 245, 254, 0.92);
+    border-radius: 7px;
+    font-size: 0.75rem;
+    color: #54656f;
+}
+
+.message-row {
+    margin-bottom: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    max-width: 80%;
+    border-radius: 7.5px;
+    position: relative;
+    box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.13);
+}
+
+.message-received {
+    background-color: white;
+    align-self: flex-start;
+}
+
+.message-sent {
+    background-color: #dcf8c6;
+    align-self: flex-end;
+}
+
+.message-content {
+    padding: 6px 8px;
+    word-wrap: break-word;
+}
+
+.message-time {
+    font-size: 0.65rem;
+    color: rgba(0, 0, 0, 0.45);
+    text-align: right;
+    margin-top: -2px;
+    padding: 0 8px 6px;
+}
+
+.message-status {
+    font-size: 0.7rem;
+    color: rgba(0, 0, 0, 0.45);
+    text-align: right;
+    padding: 0 4px 4px;
+}
+
+.bi-check2-all {
+    color: #53bdeb;
+}
+
+.with-tail {
+    &.message-received:after {
+        content: '';
+        position: absolute;
+        left: -8px;
+        top: 0;
+        border: 4px solid white;
+        border-left-color: transparent;
+        border-bottom-color: transparent;
+    }
+    
+    &.message-sent:after {
+        content: '';
+        position: absolute;
+        right: -8px;
+        top: 0;
+        border: 4px solid #dcf8c6;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+    }
+}
+
+.typing {
+    background-color: white;
+    padding: 14px;
+    border-radius: 7.5px;
+    display: flex;
+    width: 70px;
+    height: 34px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 8px;
+}
+
+.typing span {
+    height: 8px;
+    width: 8px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    display: block;
+    margin: 0 2px;
+    animation: typing 1.2s infinite;
+}
+
+.typing span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.typing span:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.typing span:nth-child(3) {
+    animation-delay: 0.8s;
+}
+
+@keyframes typing {
+    0%, 60%, 100% {
+        transform: translateY(0);
+    }
+    30% {
+        transform: translateY(-5px);
+    }
+}
+
+.whatsapp-footer {
+    height: 60px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.input-icon {
+    color: #919191;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.whatsapp-input {
+    flex: 1;
+    border: none;
+    border-radius: 20px;
+    padding: 9px 12px;
+    background-color: #f0f0f0;
+    outline: none;
+}
+
+.send-icon {
+    color: #919191;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+}
+
+// League badges and options
+.leagues-container, .option-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.league-badge, .option-btn {
+    background-color: #F0F0F0;
+    border: none;
+    border-radius: 15px;
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    
+    &:hover, &.active {
+        background-color: var(--bs-primary);
+        color: white;
+    }
+}
+
+// Match cards
+.match-card {
+    background-color: #F5F5F5;
+    border-radius: 8px;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    
+    &:hover {
+        background-color: #E8F4FF;
+    }
+}
+
+.match-teams {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+}
+
+.match-vs {
+    font-size: 0.75rem;
+    color: #757575;
+}
+
+.match-time {
+    text-align: center;
+    font-size: 0.75rem;
+    color: #666;
+    margin-top: 5px;
+}
+
+// Betting table
+.betting-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+    
+    th, td {
+        padding: 5px;
+        text-align: center;
+        border: 1px solid #ddd;
+    }
+    
+    th {
+        background-color: #f2f2f2;
+        font-weight: 600;
+    }
+    
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+}
+
+// Prediction card
+.prediction-card {
+    background-color: #f2f9ff;
+    border-radius: 8px;
+    padding: 10px;
+    border-left: 4px solid var(--bs-primary);
+}
+
+.prediction-header {
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.prediction-title {
+    font-weight: 600;
+}
+
+.prediction-confidence {
+    font-size: 0.7rem;
+    background-color: #E6F4EA;
+    color: #137333;
+    padding: 2px 8px;
+    border-radius: 12px;
+}
+
+.prediction-result {
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 8px 0;
+}
+
+.prediction-note {
+    font-size: 0.75rem;
+    color: #666;
+    font-style: italic;
+}

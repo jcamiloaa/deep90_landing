@@ -1,0 +1,53 @@
+/*!
+ * html5-device-mockups (https://github.com/pixelsign/html5-device-mockups)
+ * Copyright 2013 - 2017 pixelsign
+ * Licensed under MIT (https://github.com/pixelsign/html5-device-mockups/blob/master/LICENSE.txt)
+ * Last Build: Tue Nov 14 2017 12:40:57
+ */
+
+.device-wrapper {
+    max-width: 280px; // Reducido para un tamaño más realista
+    width: 100%;
+    margin: 0 auto;
+}
+
+.device {
+    position: relative;
+    width: 100%;
+    padding-bottom: 190%; // Ajustado para una proporción más delgada
+    background: #111; // Color más oscuro para mayor realismo
+    border-radius: 45px; // Bordes más suaves
+    box-shadow:
+        0 0 0 2px #000, // Borde más delgado
+        0 5px 20px rgba(0,0,0,0.2); // Sombra sutil para profundidad
+}
+
+.device::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 35%; // Notch más pequeño
+    height: 20px;
+    background: #000;
+    border-radius: 0 0 15px 15px;
+    z-index: 2;
+}
+
+.screen {
+    position: absolute;
+    top: 1%; // Menos espacio en los bordes
+    left: 3%;
+    width: 94%;
+    height: 98%;
+    background: #fff;
+    border-radius: 40px;
+    overflow: hidden;
+}
+
+.screen iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}

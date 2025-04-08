@@ -1,0 +1,1046 @@
+//
+// Styles
+//
+
+// Import variables
+@import "./variables.scss";
+
+// Import Bootstrap
+@import "bootstrap/scss/bootstrap.scss";
+
+// Global CSS
+@import "./global.scss";
+
+// Components
+@import "./components/navbar.scss";
+@import "./components/device-mockup.scss";
+
+// Sections
+@import "./sections/cta.scss";
+@import "./sections/features.scss";
+@import "./sections/footer.scss";
+@import "./sections/masthead.scss";
+
+.logo-glow {
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+}
+
+// 
+// Football-specific animations and visual elements
+// 
+
+// Eliminar animación de balones flotantes
+
+// Feature animations on scroll
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.feature-animation {
+    opacity: 0;
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+// Animation for scroll-triggered elements
+.animate-on-scroll {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+// Tooltip styles
+.whatsapp-tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background-color: $black;
+    color: $white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    margin-bottom: 5px;
+    
+    &:after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: $black transparent transparent transparent;
+    }
+}
+
+// Football field pattern backgrounds
+.field-pattern {
+    background-color: $green-field;
+    background-image: 
+        linear-gradient(
+            0deg, 
+            rgba(255,255,255,0.2) 1px, 
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg, 
+            rgba(255,255,255,0.2) 1px, 
+            transparent 1px
+        );
+    background-size: 20px 20px;
+}
+
+// Pulse animation for CTA elements
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba($primary, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba($primary, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba($primary, 0);
+    }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+// Football pitch visualization for hero section
+.pitch-outline {
+    position: relative;
+    width: 300px;
+    height: 400px;
+    background-color: $green-field;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+    
+    &:before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: rgba(255, 255, 255, 0.3);
+    }
+    
+    .center-circle {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100px;
+        height: 100px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1;
+    }
+    
+    .goal-area {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 50px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-top: none;
+        
+        &.top {
+            top: 0;
+        }
+        
+        &.bottom {
+            bottom: 0;
+            transform: translateX(-50%) rotate(180deg);
+        }
+    }
+    
+    // Animate to simulate grass pattern on hover
+    @media (hover: hover) {
+        &:hover {
+            background-image: repeating-linear-gradient(
+                45deg,
+                $green-field,
+                $green-field 10px,
+                darken($green-field, 5%) 10px,
+                darken($green-field, 5%) 20px
+            );
+            transition: background-image 0.3s ease;
+        }
+    }
+}
+
+// Enhance CTA button with stronger pulse effect
+.btn-primary.pulse {
+    animation: strongPulse 2s infinite;
+}
+
+@keyframes strongPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba($primary, 0.8);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 0 0 0 15px rgba($primary, 0);
+        transform: scale(1.05);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba($primary, 0);
+        transform: scale(1);
+    }
+}
+
+// Feature cards styling
+.feature-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba($primary, 0.1);
+    
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .feature-header {
+        background: linear-gradient(45deg, $primary, darken($primary, 10%));
+        
+        h3 {
+            letter-spacing: 0.5px;
+        }
+    }
+    
+    .feature-body {
+        ul.feature-list {
+            list-style: none;
+            padding-left: 0;
+            
+            li {
+                padding: 8px 0;
+                border-bottom: 1px dashed rgba($primary, 0.1);
+                
+                &:last-child {
+                    border-bottom: none;
+                }
+                
+                i {
+                    color: $primary;
+                }
+            }
+        }
+    }
+}
+
+// How it works section styling
+.how-it-works-container {
+    max-width: 1000px;
+    
+    .field-pattern {
+        background-color: $green-field;
+        height: 500px;
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        opacity: 0.8;
+        z-index: 1;
+        
+        .field-lines {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: rgba(255, 255, 255, 0.3);
+            
+            &:before, &:after {
+                content: '';
+                position: absolute;
+                width: 100px;
+                height: 100px;
+                border: 2px solid rgba(255, 255, 255, 0.3);
+                border-radius: 50%;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+            }
+            
+            &:before {
+                width: 200px;
+                height: 200px;
+                opacity: 0.5;
+            }
+        }
+    }
+    
+    .circle-step {
+        position: relative;
+        width: 70px;
+        height: 70px;
+        border: 3px solid $primary;
+        z-index: 2;
+        
+        .h1 {
+            font-family: $headings-font-family;
+            margin-bottom: 0;
+        }
+    }
+    
+    .ball-connector {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: $white;
+        border-radius: 50%;
+        z-index: 2;
+        
+        &:before {
+            content: '⚽';
+            position: absolute;
+            font-size: 20px;
+            top: -5px;
+            left: 20px;
+        }
+        
+        &.right {
+            right: -50px;
+            top: 50%;
+            transform: translateY(-50%);
+            
+            &:after {
+                content: '';
+                position: absolute;
+                width: 50px;
+                height: 2px;
+                background-color: $white;
+                top: 50%;
+                right: 15px;
+                transform: translateY(-50%);
+            }
+        }
+    }
+    
+    .step-card {
+        position: relative;
+        z-index: 2;
+        max-width: 250px;
+        border: 1px solid rgba($primary, 0.1);
+        transition: transform 0.3s ease;
+        
+        &:hover {
+            transform: translateY(-5px);
+        }
+    }
+}
+
+// Message preview styling in How It Works section
+.message-preview {
+    background-color: $primary;
+    color: $white;
+    max-width: 200px;
+    position: relative;
+    border-radius: 12px 12px 12px 0;
+    
+    &:before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: -10px;
+        width: 20px;
+        height: 20px;
+        background-color: $primary;
+        border-radius: 0 0 20px 0;
+        clip-path: polygon(100% 0, 100% 100%, 0 100%);
+    }
+    
+    .message-time {
+        opacity: 0.7;
+    }
+}
+
+// Badge styling for team selection
+.badge {
+    transition: transform 0.2s ease;
+    cursor: pointer;
+    
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+// Testimonial cards styling
+.testimonial-card {
+    transition: transform 0.3s ease;
+    overflow: hidden;
+    
+    &:hover {
+        transform: translateY(-10px);
+    }
+    
+    // Ribbon styling 
+    .ribbon {
+        width: 150px;
+        height: 150px;
+        overflow: hidden;
+        position: absolute;
+        z-index: 1;
+        
+        span {
+            position: absolute;
+            display: block;
+            width: 225px;
+            padding: 8px 0;
+            background-color: $primary;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            color: $white;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            text-align: center;
+            font-weight: bold;
+            transform: rotate(45deg);
+        }
+    }
+    
+    .ribbon-top-right {
+        top: -10px;
+        right: -10px;
+        
+        span {
+            left: -25px;
+            top: 30px;
+            transform: rotate(45deg);
+        }
+    }
+    
+    .rating {
+        .bi-star-fill, .bi-star-half, .bi-star {
+            color: #FFD700;
+            font-size: 0.8rem;
+        }
+    }
+}
+
+// Testimonial section without soccer balls
+.testimonial-slider {
+    position: relative;
+    // Las decoraciones de balones de fútbol se han eliminado
+}
+
+// Pricing cards and plans section styling
+.pricing-section {
+    background-color: $light;
+    position: relative;
+    overflow: hidden;
+    
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: 
+            linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)),
+            linear-gradient(45deg, transparent 49%, rgba($primary, 0.1) 49%, rgba($primary, 0.1) 51%, transparent 51%);
+        background-size: 100%, 20px 20px;
+        z-index: 0;
+    }
+    
+    .pricing-card {
+        overflow: hidden;
+        position: relative;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid rgba($primary, 0.1);
+        z-index: 1;
+        
+        &:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        &.premium {
+            border: 2px solid $primary;
+            z-index: 2;
+            
+            &::before {
+                content: 'Recomendado';
+                position: absolute;
+                top: 15px;
+                right: -30px;
+                transform: rotate(45deg);
+                background-color: $primary;
+                color: $white;
+                padding: 5px 35px;
+                font-size: 0.8rem;
+                font-weight: 600;
+                z-index: 10;
+            }
+        }
+        
+        .pricing-header {
+            padding: 2rem;
+            text-align: center;
+            
+            &.premium-header {
+                background: linear-gradient(45deg, $primary, darken($primary, 10%));
+                color: $white;
+            }
+            
+            .plan-name {
+                font-size: 1.5rem;
+                font-weight: 700;
+                margin-bottom: 0.5rem;
+            }
+            
+            .plan-price {
+                font-size: 2.5rem;
+                font-weight: 700;
+                margin-bottom: 1rem;
+                
+                .term {
+                    font-size: 1rem;
+                    opacity: 0.7;
+                }
+            }
+        }
+        
+        .pricing-features {
+            padding: 2rem;
+            
+            .feature-item {
+                margin-bottom: 1rem;
+                display: flex;
+                align-items: flex-start;
+                
+                i {
+                    margin-right: 0.75rem;
+                    color: $primary;
+                    font-size: 1.2rem;
+                    margin-top: 0.1rem;
+                }
+                
+                .feature-text {
+                    flex: 1;
+                }
+                
+                .feature-category {
+                    font-weight: 600;
+                    display: block;
+                    margin-bottom: 0.25rem;
+                    color: $primary;
+                }
+                
+                .feature-description {
+                    font-size: 0.9rem;
+                    color: $gray-600;
+                }
+            }
+        }
+        
+        .pricing-cta {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: $light;
+        }
+    }
+}
+
+// Enhanced CTA section styling
+.bg-gradient-primary-to-secondary {
+    position: relative;
+    
+    // Se han eliminado las decoraciones de balones de fútbol
+    
+    // Glass effect for CTA box
+    .cta-box {
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        max-width: 900px;
+    }
+    
+    .z-index-3 {
+        z-index: 3;
+        position: relative;
+    }
+    
+    .text-shadow {
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    // Custom backdrop blur utility
+    .backdrop-blur {
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+    
+    // Custom bg opacity utility
+    .bg-opacity-10 {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+}
+
+// Social icons hover effect
+.social-icons {
+    a {
+        transition: all 0.3s ease;
+        position: relative;
+        
+        &:hover {
+            transform: translateY(-5px);
+        }
+        
+        &:before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 0;
+            bottom: -5px;
+            left: 0;
+            background-color: currentColor;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            opacity: 0.5;
+        }
+        
+        &:hover:before {
+            visibility: visible;
+            height: 2px;
+        }
+    }
+}
+
+// Selected team styling
+.selected-team {
+    position: relative;
+    box-shadow: 0 0 0 2px $white;
+    
+    i {
+        margin-right: 4px;
+    }
+}
+
+// Pizarra táctica para la sección Hero
+.tactical-board {
+    position: relative;
+    width: 350px;
+    height: 480px;
+    background-color: $primary;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    margin: 0 auto;
+    
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.1);
+        z-index: 1;
+    }
+    
+    .field {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+        background-color: darken($green-field, 15%);
+        border: 2px solid rgba(255, 255, 255, 0.4);
+        border-radius: 5px;
+        z-index: 2;
+        
+        &:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px, 20px 20px, 20px 20px;
+            z-index: 2;
+        }
+    }
+    
+    .field-markings {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 3;
+        
+        .center-circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+        }
+        
+        .center-spot {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 6px;
+            height: 6px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+        }
+        
+        // Línea del medio campo
+        &:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .penalty-box {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 130px;
+            height: 80px;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            
+            &.top {
+                top: 0;
+                border-top: none;
+            }
+            
+            &.bottom {
+                bottom: 0;
+                border-bottom: none;
+            }
+            
+            .goal-box {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 70px;
+                height: 30px;
+                border: 2px solid rgba(255, 255, 255, 0.6);
+                
+                &.top {
+                    top: 0;
+                    border-top: none;
+                }
+                
+                &.bottom {
+                    bottom: 0;
+                    border-bottom: none;
+                }
+            }
+            
+            .penalty-spot {
+                position: absolute;
+                left: 50%;
+                width: 6px;
+                height: 6px;
+                background-color: rgba(255, 255, 255, 0.8);
+                border-radius: 50%;
+                transform: translateX(-50%);
+                
+                &.top {
+                    top: 60px;
+                }
+                
+                &.bottom {
+                    bottom: 60px;
+                }
+            }
+            
+            .penalty-arc {
+                position: absolute;
+                left: 50%;
+                width: 70px;
+                height: 40px;
+                border: 2px solid rgba(255, 255, 255, 0.6);
+                border-radius: 70px 70px 0 0;
+                border-bottom: none;
+                transform: translateX(-50%);
+                clip-path: inset(0 0 50% 0);
+                
+                &.top {
+                    top: 76px;
+                    transform: translateX(-50%) rotate(180deg);
+                }
+                
+                &.bottom {
+                    bottom: 76px;
+                }
+            }
+        }
+    }
+    
+    // Jugadores en la pizarra táctica
+    .players {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 4;
+        
+        .player {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            transform: translate(-50%, -50%);
+            
+            .player-dot {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 16px;
+                height: 16px;
+                background-color: #fff;
+                border-radius: 50%;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            }
+            
+            .player-label {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 9px;
+                font-weight: bold;
+                color: $primary;
+            }
+            
+            // Portero
+            &.gk {
+                bottom: 10%;
+                left: 50%;
+                
+                .player-dot {
+                    background-color: #ffcc00;
+                }
+            }
+            
+            // Defensas
+            &.def {
+                bottom: 25%;
+                
+                &.left-back {
+                    left: 20%;
+                }
+                
+                &.center-back {
+                    &.left {
+                        left: 40%;
+                    }
+                    
+                    &.right {
+                        left: 60%;
+                    }
+                }
+                
+                &.right-back {
+                    left: 80%;
+                }
+            }
+            
+            // Mediocampistas
+            &.mid {
+                bottom: 50%;
+                
+                &.defensive-mid {
+                    left: 50%;
+                }
+                
+                &.left-mid {
+                    left: 30%;
+                }
+                
+                &.right-mid {
+                    left: 70%;
+                }
+            }
+            
+            // Delanteros
+            &.fwd {
+                bottom: 75%;
+                
+                &.left-wing {
+                    left: 25%;
+                }
+                
+                &.striker {
+                    left: 50%;
+                }
+                
+                &.right-wing {
+                    left: 75%;
+                }
+            }
+        }
+    }
+    
+    // Flechas tácticas
+    .tactical-arrows {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 5;
+        
+        .arrow {
+            position: absolute;
+            width: 40px;
+            height: 8px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 4px;
+            transform-origin: left center;
+            
+            &:after {
+                content: '';
+                position: absolute;
+                top: -6px;
+                right: -4px;
+                border-left: 12px solid rgba(255, 255, 255, 0.7);
+                border-top: 10px solid transparent;
+                border-bottom: 10px solid transparent;
+            }
+            
+            &.arrow-1 {
+                top: 35%;
+                left: 40%;
+                transform: rotate(-25deg);
+            }
+            
+            &.arrow-2 {
+                top: 60%;
+                left: 60%;
+                transform: rotate(35deg);
+            }
+            
+            &.arrow-3 {
+                top: 25%;
+                left: 25%;
+                transform: rotate(-5deg);
+            }
+        }
+    }
+    
+    // Etiqueta de la pizarra
+    .board-label {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(255, 255, 255, 0.9);
+        color: $primary;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: bold;
+        z-index: 6;
+        white-space: nowrap;
+    }
+}
+
+// Animación para la formación táctica
+.formation-animation {
+    .player {
+        opacity: 0;
+        animation: fadeInPlayer 0.5s ease forwards;
+    }
+    
+    // Tiempos de entrada escalonados para cada línea de jugadores
+    .gk {
+        animation-delay: 0.2s;
+    }
+    
+    .def {
+        animation-delay: 0.4s;
+    }
+    
+    .mid {
+        animation-delay: 0.6s;
+    }
+    
+    .fwd {
+        animation-delay: 0.8s;
+    }
+}
+
+// Animación de aparición de jugadores
+@keyframes fadeInPlayer {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -30%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+// Animaciones para las flechas tácticas
+.tactical-arrows .arrow {
+    opacity: 0;
+    animation: fadeInArrow 0.3s ease forwards;
+    
+    &.arrow-1 {
+        animation-delay: 1s;
+    }
+    
+    &.arrow-2 {
+        animation-delay: 1.2s;
+    }
+    
+    &.arrow-3 {
+        animation-delay: 1.4s;
+    }
+}
+
+@keyframes fadeInArrow {
+    from {
+        opacity: 0;
+        width: 0;
+    }
+    to {
+        opacity: 1;
+        width: 40px;
+    }
+}
+
+// Animación para la etiqueta de la pizarra
+.board-label {
+    opacity: 0;
+    animation: fadeInUp 0.5s ease forwards 1.6s;
+}

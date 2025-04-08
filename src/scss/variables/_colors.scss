@@ -1,0 +1,16 @@
+// 
+// Colors
+// 
+
+// Football theme colors
+$green-whatsapp: #25D366;
+$green-field: #2E8A2E;
+$green-field-dark: #1A7A1A;
+$chalk-white: rgba(255, 255, 255, 0.8);
+$orange: #FF6B00;
+$black: #000000;
+
+// Override Bootstrap color system colors
+$primary: $green-whatsapp;
+$secondary: $orange;
+$dark: $black;

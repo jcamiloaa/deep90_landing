@@ -1,0 +1,45 @@
+
+<!-- Feedback Modal-->
+<div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-gradient-primary-to-secondary p-4">
+        <h5 class="modal-title text-white" id="feedbackModalLabel">Contáctanos</h5>
+        <button class="btn-close btn-close-white" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body border-0 p-4">
+        <form id="contactForm">
+          <div class="form-floating mb-3">
+            <input class="form-control" id="name" type="text" placeholder="Ingresa tu nombre..." required="required"/>
+            <label for="name">Nombre completo</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input class="form-control" id="email" type="email" placeholder="nombre@ejemplo.com" required="required"/>
+            <label for="email">Correo electrónico</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input class="form-control" id="phone" type="tel" placeholder="(300) 123-4567"/>
+            <label for="phone">Número de teléfono</label>
+          </div>
+          <div class="form-floating mb-3">
+            <textarea class="form-control" id="message" placeholder="Escribe tu mensaje aquí..." style="height: 10rem" required="required"></textarea>
+            <label for="message">Mensaje</label>
+          </div>
+          <div class="d-grid">
+            <button class="btn btn-primary rounded-pill py-3" type="submit">Enviar</button>
+          </div>
+        </form>
+        <!-- Success message-->
+        <div class="d-none" id="submitSuccessMessage">
+          <div class="text-center mb-3">
+            <div class="fw-bolder">¡Mensaje enviado exitosamente!</div>Pronto nos pondremos en contacto contigo.<br/>
+          </div>
+        </div>
+        <!-- Error message-->
+        <div class="d-none" id="submitErrorMessage">
+          <div class="text-center text-danger mb-3">¡Error al enviar el mensaje!</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+// Feedback Modal
+#feedbackModal.modal.fade(tabindex='-1', aria-labelledby='feedbackModalLabel', aria-hidden='true')
+    .modal-dialog.modal-dialog-centered
+        .modal-content
+            .modal-header.bg-gradient-primary-to-secondary.p-4
+                h5#feedbackModalLabel.modal-title.text-white Contáctanos
+                button.btn-close.btn-close-white(type='button', data-bs-dismiss='modal', aria-label='Close')
+            .modal-body.border-0.p-4
+                form#contactForm
+                    .form-floating.mb-3
+                        input#name.form-control(type='text', placeholder='Ingresa tu nombre...', required)
+                        label(for='name') Nombre completo
+                    .form-floating.mb-3
+                        input#email.form-control(type='email', placeholder='nombre@ejemplo.com', required)
+                        label(for='email') Correo electrónico
+                    .form-floating.mb-3
+                        input#phone.form-control(type='tel', placeholder='(300) 123-4567')
+                        label(for='phone') Número de WhatsApp
+                    .form-floating.mb-3
+                        select#team.form-control(required)
+                            option(value='', selected, disabled) Selecciona tu equipo
+                            option(value='nacional') Atlético Nacional
+                            option(value='millonarios') Millonarios
+                            option(value='america') América de Cali
+                            option(value='junior') Junior de Barranquilla
+                            option(value='medellin') Independiente Medellín
+                            option(value='cali') Deportivo Cali
+                            option(value='santafe') Santa Fe
+                            option(value='otro') Otro equipo
+                        label(for='team') Tu Equipo
+                    .form-floating.mb-3
+                        textarea#message.form-control(placeholder='Escribe tu mensaje aquí...', style='height: 10rem', required)
+                        label(for='message') Tu mensaje
+                    .d-grid
+                        button.btn.btn-primary.rounded-pill.py-3(type='submit') Enviar mensaje
+
+                // Success message
+                #submitSuccessMessage.d-none
+                    .text-center.mb-3
+                        .fw-bolder ¡Mensaje enviado con éxito! 🎯
+                        | Nuestro equipo se pondrá en contacto contigo pronto.
+                        br
+
+                // Error message
+                #submitErrorMessage.d-none
+                    .text-center.text-danger.mb-3 Hubo un error al enviar el mensaje. Por favor, intenta de nuevo.
