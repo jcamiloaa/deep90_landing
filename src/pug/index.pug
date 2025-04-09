@@ -26,28 +26,24 @@ html(lang='es')
         // Core theme CSS (includes Bootstrap)
         link(href='css/styles.css', rel='stylesheet')
 
-    body#page-top
-        
+    body#page-top        
         // Preloader Animation
         #preloader.preloader
             .preloader-content
-                .logo-container
-                    img(src='assets/img/preload-logo.png', alt='Deep90 Logo')
                 .text-animation
                     .full-logo
-                        span.text-white D
-                        span.text-white e
-                        span.text-white e
-                        span.text-white p
-                        span.text-primary 9
-                        span.text-primary 0
-                .tagline Análisis de fútbol simple y directo
+                        span.text-white.font-alt D
+                        span.text-white.text-lowercase.font-alt e
+                        span.text-white.text-lowercase.font-alt e
+                        span.text-white.text-lowercase.font-alt p
+                        span.text-primary.font-alt 9
+                        span.text-primary.font-alt 0
 
         // Navigation
         nav#mainNav.navbar.navbar-expand-lg.navbar-dark.fixed-top.shadow-sm
             .container.px-5
                 a.navbar-brand.fw-bold(href='#page-top')
-                    img(src='assets/img/logo.png', alt='Deep90 Logo', height='30')
+                    img(src='assets/img/logo.png', alt='Deep90 Logo', height='32')
                 button.navbar-toggler(type='button', data-bs-toggle='collapse', data-bs-target='#navbarResponsive', aria-controls='navbarResponsive', aria-expanded='false', aria-label='Toggle navigation')
                     | Menú
                     i.bi-list
@@ -73,16 +69,16 @@ html(lang='es')
             header.masthead
                 .container.px-5
                     .row.gx-5.align-items-center
-                        .col-lg-6
-                            .mb-5.mb-lg-0.text-center.text-lg-start  
-                                h1.display-1.lh-1.mb-3 DEEP90: análisis de fútbol simple y directo ⚽︎
-                                p.lead.fw-normal.text-muted.mb-5 Toda la información que necesitas sobre tu equipo favorito, explicada de forma clara y directa por WhatsApp. Estadísticas, predicciones y análisis táctico sin complicaciones, antes, durante y después del partido. 🎯
+                        .col-lg-9
+                            .mb-5.mb-lg-0.text-center.text-lg-start                                       
+                                h1.display-2.lh-1.mb-3.text-normal-case.font-alt ¿Listo para dominar el fútbol con datos? Deep90 lleva el poder del análisis a tu chat
+                                p.lead.fw-normal.text-muted.mb-5 Simple, revolucionario y 100% enfocado en ti. ¡Únete a la nueva era del fútbol! 
                                 .d-flex.flex-column.flex-lg-row.align-items-center
                                     button.btn.btn-primary.rounded-pill.px-4.py-3.pulse.text-white(onclick="window.open('https://wa.me/573227091047?text=Hola%20Deep90', '_blank')")
                                         span.d-flex.align-items-center
                                             i.bi-whatsapp.me-2
-                                            span Probar ahora - Es gratis
-                        .col-lg-6
+                                            span "Probar ahora!"
+                        .col-lg-3
                             .position-relative.text-center.p-4
                                 .tactical-board.mx-auto.d-none.d-lg-block
                                     .field
@@ -150,25 +146,17 @@ html(lang='es')
                                         // Etiqueta de la pizarra
                                         .board-label
                                             span Análisis Táctico
-
-        // First gradient message
-        aside.text-center.bg-primary
-            .container.px-5
-            .row.justify-content-center
-                .col-xl-8
-                .d-flex.align-items-center.justify-content-center.gap-4
-                    .h2.fs-1.text-white.mb-0(style='font-weight: normal; letter-spacing: 0.05em;') Análisis futbolístico claro, simple y directo en tu WhatsApp 📱
-
         // Features Section
         section#features.bg-white
             .container.px-5
                 .row.gx-5.justify-content-center
                     .col-lg-8.text-center.mb-5
-                        h2.display-4.lh-1.mb-4 Lo que nos hace diferentes 🔥
+                        h2.display-4.lh-1.mb-4.font-alt Lo que nos hace diferentes
                         p.lead.fw-normal.text-muted.mb-5
                             | Mientras otras plataformas complican las cosas con exceso de datos, nosotros te explicamos el fútbol de forma sencilla y directa.
 
-                .row.gx-5.gy-4
+                // Vista normal para escritorio - se oculta en móvil
+                .row.gx-5.gy-4.d-none.d-md-flex
                     // Tarjeta 1
                     .col-md-6.mb-5
                         .feature-card.shadow-sm.rounded-3.h-100.overflow-hidden
@@ -249,20 +237,110 @@ html(lang='es')
                                         i.bi-check-circle-fill.text-primary.me-2
                                         | Análisis compartidos con toda la comunidad
 
-        // Second gradient message
-        aside.text-center.bg-primary
-            .container.px-5
-            .row.justify-content-center
-                .col-xl-8
-                .d-flex.align-items-center.justify-content-center.gap-4
-                    .h2.fs-1.text-white.mb-0(style='font-weight: normal; letter-spacing: 0.05em;') Entendemos el fútbol para que tú no tengas que complicarte 📊
+                // Carrusel para móvil - se muestra solo en móvil
+                #featureCarousel.carousel.slide.d-md-none.mb-5(data-bs-ride='carousel' data-bs-interval='5000')
+                    .carousel-indicators
+                        button(type='button' data-bs-target='#featureCarousel' data-bs-slide-to='0' class='active' aria-current='true' aria-label='Slide 1')
+                        button(type='button' data-bs-target='#featureCarousel' data-bs-slide-to='1' aria-label='Slide 2')
+                        button(type='button' data-bs-target='#featureCarousel' data-bs-slide-to='2' aria-label='Slide 3')
+                        button(type='button' data-bs-target='#featureCarousel' data-bs-slide-to='3' aria-label='Slide 4')
+                    
+                    .carousel-inner.px-3
+                        // Slide 1
+                        .carousel-item.active
+                            .feature-card.shadow-sm.rounded-3.h-100.overflow-hidden
+                                .feature-header.bg-primary.text-white.p-3
+                                    h3.font-alt.mb-0 
+                                        i.bi-broadcast.me-2
+                                        | Alertas en Tiempo Real 🔴
+                                .feature-body.p-4
+                                    p.mb-3 Recibe notificaciones de goles y momentos clave del partido al instante. Sin demoras, sin complicaciones.
+                                    ul.feature-list
+                                        li
+                                            i.bi-check-circle-fill.text-primary.me-2
+                                            | Alertas de goles instantáneas
+                                        li
+                                            i.bi-check-circle-fill.text-primary.me-2
+                                            | Análisis de cambios tácticos
+                                        li
+                                            i.bi-check-circle-fill.text-primary.me-2
+                                            | Información sobre tarjetas y sustituciones
+                        
+                        // Slide 2
+                        .carousel-item
+                            .feature-card.shadow-sm.rounded-3.h-100.overflow-hidden
+                                .feature-header.bg-primary.text-white.p-3
+                                    h3.font-alt.mb-0
+                                        i.bi-graph-up.me-2
+                                        | Estadísticas Claras 📊
+                                .feature-body.p-4
+                                    p.mb-3 Datos relevantes presentados de forma comprensible. Te explicamos lo que necesitas saber, sin abrumarte con números innecesarios.
+                                    ul.feature-list
+                                        li
+                                            i.bi-check-circle-fill.text-primary.me-2
+                                            | Visualizaciones intuitivas
+                                        li
+                                            i.bi-check-circle-fill.text-primary.me-2
+                                            | Análisis de rendimiento simplificado
+                                        li
+                                            i.bi-check-circle-fill.text-primary.me-2
+                                            | Comparativas útiles
+                        
+                        // Slide 3
+                        .carousel-item
+                            .feature-card.shadow-sm.rounded-3.h-100.overflow-hidden
+                                .feature-header.bg-primary.text-white.p-3
+                                    h3.font-alt.mb-0
+                                        i.bi-magic.me-2
+                                        | Predicciones Precisas 🔮
+                                .feature-body.p-4
+                                    p.mb-3 Utilizamos inteligencia artificial para ofrecerte predicciones que realmente tienen sentido, explicadas de manera que cualquiera pueda entenderlas.
+                                    ul.feature-list
+                                        li
+                                            i.bi-check-circle-fill.text-primary.me-2
+                                            | Pronósticos basados en datos
+                                        li
+                                            i.bi-check-circle-fill.text-primary.me-2
+                                            | Tendencias y probabilidades
+                                        li
+                                            i.bi-check-circle-fill.text-primary.me-2
+                                            | Previsiones de alineaciones
+                        
+                        // Slide 4
+                        .carousel-item
+                            .feature-card.shadow-sm.rounded-3.h-100.overflow-hidden
+                                .feature-header.bg-primary.text-white.p-3
+                                    h3.font-alt.mb-0
+                                        i.bi-people.me-2
+                                        | Comunidad Informada 👥
+                                .feature-body.p-4
+                                    p.mb-3 Conéctate con otros aficionados que también buscan entender mejor el juego. Comparte y recibe información valiosa con datos reales para respaldar cada opinión.
+                                    ul.feature-list
+                                        li
+                                            i.bi-check-circle-fill.text-primary.me-2
+                                            | Grupos organizados por equipos
+                                        li
+                                            i.bi-check-circle-fill.text-primary.me-2
+                                            | Conversaciones guiadas por analistas
+                                        li
+                                            i.bi-check-circle-fill.text-primary.me-2
+                                            | Análisis compartidos con toda la comunidad
+                    
+                    // Controles de navegación
+                    button.carousel-control-prev(type='button' data-bs-target='#featureCarousel' data-bs-slide='prev')
+                        span.carousel-control-prev-icon(aria-hidden='true')
+                        span.visually-hidden Anterior
+                    button.carousel-control-next(type='button' data-bs-target='#featureCarousel' data-bs-slide='next')
+                        span.carousel-control-next-icon(aria-hidden='true')
+                        span.visually-hidden Siguiente
+
 
         // How it Works Section
         section#how.bg-white
             .container.px-5
                 .row.gx-5.justify-content-center
                     .col-lg-8.text-center.mb-5
-                        h2.display-4.lh-1.mb-4 Así de fácil funciona DEEP90 ⚽
+                        h2.display-4.lh-1.mb-4.font-alt Así de fácil funciona Deep90
                         p.lead.fw-normal.text-muted.mb-5
                             | Una conversación natural que te acerca al análisis profesional del fútbol
 
@@ -493,11 +571,16 @@ html(lang='es')
                                     a.send-icon.ms-2(href='#')
                                         i.bi-mic
         
-        // Botón CTA por WhatsApp
-        .text-center.mb-5
-            button.btn.btn-primary.btn-lg.rounded-pill.px-5.py-3.pulse.text-white(onclick="window.open('https://wa.me/573227091047?text=Hola%20DEEP90,%20quiero%20empezar%20a%20usar%20el%20servicio', '_blank')")
-                i.bi-whatsapp.me-2
-                | Comenzar a usar DEEP90 ahora
+
+
+        // Third gradient message
+        aside.text-center.bg-primary
+            .container.px-5
+            .row.justify-content-center
+                .col-xl-8
+                .d-flex.align-items-center.justify-content-center.gap-4
+                    .h2.fs-1.text-white.mb-0(style='font-weight: normal; letter-spacing: 0.05em;') ¿Simple aficionado o analista pro? Tú decides hasta dónde llegar ⚽
+
 
         // Pricing Plans Section
         section#pricing.pricing-section.bg-white
@@ -612,20 +695,12 @@ html(lang='es')
                                     | Obtener Plan VIP
                                 
 
-        // Third gradient message
-        aside.text-center.bg-primary
-            .container.px-5
-            .row.justify-content-center
-                .col-xl-8
-                .d-flex.align-items-center.justify-content-center.gap-4
-                    .h2.fs-1.text-white.mb-0(style='font-weight: normal; letter-spacing: 0.05em;') ¿Simple aficionado o analista pro? Tú decides hasta dónde llegar ⚽
-
         // Testimonials Section
         section#testimonials.bg-light
             .container.px-5
                 .row.gx-5.justify-content-center
                     .col-lg-8.text-center.mb-5
-                        h2.display-4.lh-1.mb-4 La hinchada habla 🗣️
+                        h2.display-4.lh-1.mb-4.font-alt La hinchada habla
                         p.lead.fw-normal.text-muted.mb-5
                             | Opiniones más confiables que el VAR, según nuestros usuarios.
 
@@ -659,7 +734,7 @@ html(lang='es')
                             .testimonial-card.card.h-100.shadow.position-relative
                                 .card-body.p-4
                                     .ribbon.ribbon-top-right
-                                        span La mediocampista
+                                        span Mediocampista
                                     .d-flex.justify-content-between.mb-3
                                         .d-flex.align-items-center
                                             img.rounded-circle.me-3(src='https://randomuser.me/api/portraits/women/44.jpg', width='50', height='50', alt='User')
@@ -700,26 +775,6 @@ html(lang='es')
                                             i.bi-star-half.text-warning
                                         span.text-muted.small ¡Mejor que el FIFA!
 
-        // Final CTA Section
-        section.cta-section.py-5
-            .container.px-5.position-relative.z-index-3
-                .row.justify-content-center
-                    .col-xl-10
-                        .cta-box.py-5.px-4.bg-white.rounded-4.shadow-lg.mx-auto.my-4
-                            .d-flex.flex-column.align-items-center.justify-content-center
-                                h2.display-4.mb-4 ¿Cansado de las estadísticas complicadas? 🤔
-                                .d-flex.flex-column.flex-md-row.gap-3.mb-4.w-100.justify-content-center
-                                    button.btn.btn-primary.btn-lg.rounded-pill.px-5.py-3.shadow-lg.pulse.text-white(onclick="window.open('https://wa.me/573227091047?text=Hola%20Deep90,%20quiero%20probar%20el%20analisis', '_blank')")
-                                        span.d-flex.align-items-center
-                                            i.bi-whatsapp.me-2
-                                            span.fs-5 Comenzar ahora - Gratis
-                                    
-                                    button.btn.btn-outline-primary.btn-lg.rounded-pill.px-5.py-3(data-bs-toggle="modal", data-bs-target="#feedbackModal")
-                                        span.d-flex.align-items-center
-                                            i.bi-envelope.me-2
-                                            span.fs-5 Contactar al equipo
-                                
-                                p.fst-italic.mt-3.mb-0 "Analizamos el fútbol para que tú solo tengas que disfrutarlo"
 
         // Footer
         footer.bg-black.text-center.py-5

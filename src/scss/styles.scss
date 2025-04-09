@@ -151,6 +151,9 @@
         justify-content: center;
         z-index: 1;
     }
+    .text-normal-case {
+        text-transform: none !important;
+    }
     
     .goal-area {
         position: absolute;
@@ -408,7 +411,6 @@
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
             color: $white;
             font-size: 0.8rem;
-            text-transform: uppercase;
             text-align: center;
             font-weight: bold;
             transform: rotate(45deg);
@@ -1146,7 +1148,6 @@
         transform: scaleX(1);
     }
 }
-
 .preloader-content {
     display: flex;
     flex-direction: column;
@@ -1188,6 +1189,7 @@
     margin-bottom: 1.5rem;
     font-family: $headings-font-family;
     perspective: 1000px;
+    text-transform: none; /* Ensures text keeps its original case */
     
     .full-logo {
         display: flex;
@@ -1202,6 +1204,7 @@
             transform: translateY(20px);
             text-shadow: 0 2px 15px rgba(0,0,0,0.5);
             transform-style: preserve-3d;
+            text-transform: none; /* Preserves exact letter case */
         }
         
         /* Estilos para Deep (blanco) */
@@ -1216,6 +1219,10 @@
     }
 }
 
+.text-lowercase {
+    text-transform: lowercase !important;
+}
+
 .tagline {
     font-family: $alt-font-family;
     font-size: 1.25rem;
@@ -1225,6 +1232,7 @@
     text-shadow: 0 2px 5px rgba(0,0,0,0.3);
     margin-top: 0.5rem;
     position: relative;
+    text-transform: none; /* Preserves exact letter case */
     
     &:after {
         content: '';
