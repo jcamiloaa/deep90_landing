@@ -11670,6 +11670,9 @@ footer a:hover, footer a:active, footer a:focus {
   justify-content: center;
   z-index: 1;
 }
+.pitch-outline .text-normal-case {
+  text-transform: none !important;
+}
 .pitch-outline .goal-area {
   position: absolute;
   left: 50%;
@@ -11883,7 +11886,6 @@ footer a:hover, footer a:active, footer a:focus {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   color: #fff;
   font-size: 0.8rem;
-  text-transform: uppercase;
   text-align: center;
   font-weight: bold;
   transform: rotate(45deg);
@@ -12521,6 +12523,7 @@ footer a:hover, footer a:active, footer a:focus {
   margin-bottom: 1.5rem;
   font-family: "Bebas Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   perspective: 1000px;
+  text-transform: none; /* Ensures text keeps its original case */
 }
 .text-animation .full-logo {
   display: flex;
@@ -12537,12 +12540,17 @@ footer a:hover, footer a:active, footer a:focus {
   transform: translateY(20px);
   text-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
   transform-style: preserve-3d;
+  text-transform: none; /* Preserves exact letter case */
 }
 .text-animation .full-logo span.text-white {
   color: #fff;
 }
 .text-animation .full-logo span.text-primary {
   color: #25D366;
+}
+
+.text-lowercase {
+  text-transform: lowercase !important;
 }
 
 .tagline {
@@ -12554,6 +12562,7 @@ footer a:hover, footer a:active, footer a:focus {
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   margin-top: 0.5rem;
   position: relative;
+  text-transform: none; /* Preserves exact letter case */
 }
 .tagline:after {
   content: "";
